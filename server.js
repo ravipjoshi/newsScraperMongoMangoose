@@ -7,7 +7,7 @@ const app = express();
 const env = require("dotenv").config();
 const port = process.env.PORT || 3000;
 const MONGODB_URI = 
-  process.env.MONGODB_URI || "mongodb://localhost/nytHeadlines";
+  process.env.MONGODB_URI || "mongodb://localhost/newsscrape";
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
