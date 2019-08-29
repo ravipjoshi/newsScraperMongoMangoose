@@ -1,6 +1,6 @@
 const cheerio = require("cheerio");
 const request = require("request");
-const db      = require("../model");
+const db      = require("../models");
 
 const getHeadline = selector => { 
   return {

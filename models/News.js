@@ -34,6 +34,6 @@ var NewsSchema = new Schema({
   ]
 });
 
-var News = mongoose.model("Comments", NewsSchema);
+var News = mongoose.model("News", NewsSchema);
 
 module.exports = News;
