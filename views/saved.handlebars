@@ -1,49 +1,46 @@
-<div class="modal fade" id="scrapedModal" tabindex="-1" role="dialog" aria-labelledby="scrapedModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<div class="modal fade" id="modalNotesForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-top modal-lg mt-0" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h5 class="modal-title" id="scrapedModalLabel"></h5>
+        <h4 class="modal-title w-100 font-weight-bold">Article Notes</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body mx-3">
       </div>
       <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-warning note-modal-btn" data-dismiss="modal">Close</button>
+        <button type="button" class="add-notes btn btn-secondary note-modal-btn">Add Note</button>
       </div>
     </div>
   </div>
 </div>
 
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark primary-color scrolling-navbar">
-  <a class="navbar-brand pt-0" href="#"><i class="fa fa-newspaper-o mr-1" aria-hidden="true"></i><strong>News Scraper</strong></a>
+  <a class="navbar-brand" href="#"><i class="fa fa-newspaper-o mr-1" aria-hidden="true"></i><strong>Saved Articles</strong></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto" id="navbar-list">
-      <li class="nav-item active" id="home">
-        <a class="nav-link mt-2" href="#">Home <span class="sr-only">(current)</span></a>
+      <li class="nav-item" id="home">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item" id="saved">
-        <a class="nav-link mt-2" href="#">Saved Articles</a>
+      <li class="nav-item active" id="saved">
+        <a class="nav-link" href="#">Saved Articles</a>
       </li>
-      <li class="nav-item" id="scrape">
-        <a class="nav-link btn btn-secondary" href="#">Scrape New Articles</a>
-      </li>
-    </ul>
   </div>
 </nav>
 
 <div class="jumbotron jumbotron-fluid h-50 z-depth-4">
   <div class="container mt-5">
-    <h1 class="h1-reponsive mb-4 white-text text-center font-bold">News Scraper</h1>
-    <p class="lead white-text text-center">New York Times Edition</p>
+    <h1 class="h1-reponsive mb-4 white-text text-center font-bold">Saved Articles</h1>
+    <p class="lead white-text text-center">Your Saved Articles</p>
   </div>
 </div>
 
-<div class="container-fluid headlines" data-scraped={{scraped}}>
+<div class="container-fluid headlines">
 {{#if headlines}}
   {{#each headlines}}
   <div class="row headline mt-3 z-depth-4 rounded">
@@ -52,9 +49,9 @@
         <div class="card-header primary-color">
           <h3>
             <a class="hl-link align-middle white-text" target=_blank href={{link}}>{{title}}</a>
-            <div class="float-right">
-              <a class="hl-delete btn btn-danger" href="#">DELETE ARTICLE</a>
-              <a class="hl-save btn btn-success" href="#">SAVE ARTICLE</a>
+            <div class = "float-right">
+              <a class="hl-nosave btn btn-danger" href="#">DELETE FROM SAVED</a>
+              <a class="hl-notes btn btn-secondary" href="#">ARTICLE NOTES</a>
             </div>
           </h3>
         </div>
@@ -69,7 +66,7 @@
   {{else}}
     <div class="card">
       <div class="card-body primary-color text-center">
-        <p class="note card-text d-inline white-text font-bold">No headlines currently exist. Please scrape articles to add them!</p>
+        <p class="note card-text d-inline white-text font-bold">No headlines currently exist. Please save articles to add them!</p>
       </div>
     </div>
   {{/if}}

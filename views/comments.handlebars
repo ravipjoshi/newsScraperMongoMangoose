@@ -1,0 +1,32 @@
+<div class="container-fluid" id="note-container">
+{{#if notes}}
+  <ul class="list-group">
+  {{#each notes}}
+    <li class="list-group-item">
+      <div class="card" data-id={{_id}}>
+        <div class="card-body primary-color">
+          <p class="note card-text d-inline white-text font-bold">{{author}}: {{body}}</p>
+          <a class="note-delete btn btn-sm btn-danger mt-0 float-sm-right" href="#">X</a>
+        </div>
+      </div>
+    </li>
+  {{/each}}
+  </ul>
+{{else}}
+  <div class="card">
+    <div class="card-body primary-color text-center">
+      <p class="note card-text d-inline white-text font-bold">No notes currently exist. Add the first one!</p>
+    </div>
+  </div>
+{{/if}}
+  <div class="container border border-secondary mt-2" id="add-note-form" data-id={{id}}>
+    <div class="form-group mt-3">
+        <label for="note-name">Name</label>
+        <textarea class="form-control rounded-0" id="note-name" rows="1"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="note-body">Write your note here</label>
+        <textarea class="form-control rounded-0" id="note-body" rows="5"></textarea>
+    </div>
+  </div>
+</div>
