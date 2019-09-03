@@ -4,10 +4,10 @@ const db      = require("../models");
 
 const getHeadline = selector => { 
   return {
-    link:    selector.children("h2.story-heading").children("a").attr("href"),
-    title:   selector.children("h2.story-heading").children("a").text(),
-    summary: selector.children("p.summary").text(),
-    byline:  selector.children("p.byline").text()
+    link:    selector.children(".css-6p6lnl").children("a").attr("href"),
+    title:   selector.children(".css-1qwxefa esl82me0").children("span").text(),
+    summary: selector.children(".css-6p6lnl").children("a").children("ul").text(),
+    byline:  selector.children(".css-1slnf6i").text()
   }
 };
 
@@ -57,12 +57,12 @@ module.exports = app => {
       const $ = cheerio.load(html);
 
       let headlines = [];
-      $("article.theme-summary", "div.a-column").each((i, element) => {
+      $(".css-1yoguk1 eqveam60","css-qvz0vj eqveam61").each((i, element) => {
         const headline = getHeadline($(element));
         if (headline.title && headline.link) headlines.push(headline);
       })
 
-      $("article.theme-summary", "div.b-column").each((i, element) => {
+      $(".css-1yoguk1 eqveam60","css-qvz0vj eqveam61").each((i, element) => {
         const headline = getHeadline($(element));
         if (headline.title && headline.link) headlines.push(headline);
       });       
