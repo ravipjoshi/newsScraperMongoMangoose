@@ -4,17 +4,17 @@ $(document).ready(() => {
       $(element).addClass("active");
     };
   
-    const getNotes = id => {
-      const url = `/api/notes/${id}`;
+    const getComments = id => {
+      const url = `/api/comments/${id}`;
       console.log("GET request: " + url);
   
       $.ajax(url, {
         type: "GET"
       })
       .then(results => {
-        $("#modalNotesForm .modal-body").html(results);
+        $("#modalCommentsForm .modal-body").html(results);
   
-        $("#modalNotesForm").modal("show");
+        $("#modalCommentsForm").modal("show");
       })
       .fail(error => console.error(error));
     };
@@ -34,8 +34,8 @@ $(document).ready(() => {
       $(".headlines").append(divCard);
     };
     
-    const addNoNotesMessage = () => {
-      const message = `No notes currently exist. Add the first one!`;
+    const addNoCommentsMessage = () => {
+      const message = `No comments currently exist. Add the first one!`;
       let divCard = getMessageDiv(message);
   
       $("#note-container .list-group").remove();
@@ -149,33 +149,33 @@ $(document).ready(() => {
       .fail(error => console.error(error));
     });
   
-    $(document).on("click", ".hl-notes", function() {
-      getNotes($(this).closest(".card").data("id"));
+    $(document).on("click", ".hl-comments", function() {
+      getComments($(this).closest(".card").data("id"));
     });
   
-    $(document).on("click", ".add-notes", () => {
-      const author = $("#note-name").val().trim();
-      const body   = $("#note-body").val().trim();
+    $(document).on("click", ".add-comments", () => {
+      const author = $("#comments-name").val().trim();
+      const body   = $("#comment-body").val().trim();
   
       if (author && body) {
         const dataObj = { author: author, body: body };
   
-        const id = $("#add-note-form").data("id");
-        const url = `/api/notes/add/${id}`;
+        const id = $("#add-comment-form").data("id");
+        const url = `/api/comments/add/${id}`;
         console.log("POST request: " + url);
   
         $.ajax(url, {
           type: "POST",
           data: dataObj
         })
-        .then(results => getNotes(id))
+        .then(results => getComments(id))
         .fail(error => console.error(error));
       }
     });
   
-    $(document).on("click", ".note-delete", function() {
+    $(document).on("click", ".comment-delete", function() {
       const dataObj = { id: $(this).closest(".card").data("id") };
-      const url = "/api/notes/delete";
+      const url = "/api/comments/delete";
       console.log("DELETE request: " + url);
   
       $.ajax(url, {
@@ -184,7 +184,7 @@ $(document).ready(() => {
       })
       .then(results => {
         $(this).closest(".list-group-item").remove();
-        if (!($("#note-container").has(".list-group-item").length)) {
+        if (!($("#comment-container").has(".list-group-item").length)) {
           addNoNotesMessage();
         }
       })

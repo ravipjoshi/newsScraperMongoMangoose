@@ -1,8 +1,8 @@
-<div class="modal fade" id="modalNotesForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalCommentsForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-top modal-lg mt-0" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Article Notes</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Article Comments</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -10,8 +10,8 @@
       <div class="modal-body mx-3">
       </div>
       <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-warning note-modal-btn" data-dismiss="modal">Close</button>
-        <button type="button" class="add-notes btn btn-secondary note-modal-btn">Add Note</button>
+        <button type="button" class="btn btn-warning comment-modal-btn" data-dismiss="modal">Close</button>
+        <button type="button" class="add-comments btn btn-secondary comment-modal-btn">Add Comment</button>
       </div>
     </div>
   </div>
@@ -51,7 +51,7 @@
             <a class="hl-link align-middle white-text" target=_blank href={{link}}>{{title}}</a>
             <div class = "float-right">
               <a class="hl-nosave btn btn-danger" href="#">DELETE FROM SAVED</a>
-              <a class="hl-notes btn btn-secondary" href="#">ARTICLE NOTES</a>
+              <a class="hl-comments btn btn-secondary" href="#">ARTICLE COMMENT</a>
             </div>
           </h3>
         </div>
@@ -66,7 +66,7 @@
   {{else}}
     <div class="card">
       <div class="card-body primary-color text-center">
-        <p class="note card-text d-inline white-text font-bold">No headlines currently exist. Please save articles to add them!</p>
+        <p class="comment card-text d-inline white-text font-bold">No headlines currently exist. Please save articles to add them!</p>
       </div>
     </div>
   {{/if}}

@@ -86,10 +86,10 @@ module.exports = app => {
   app.get("/api/comments/:id", (req, res) => {
     const id = req.params.id;
     db.News.findById(id)
-    .populate("notes")
+    .populate("comments")
     .then(results => {
-      let renderObj = { id: id, notes: results.notes, layout: false };
-      res.render("notes", renderObj);
+      let renderObj = { id: id, comments: results.comments, layout: false };
+      res.render("comments", renderObj);
     })
     .catch(error => res.json(error));
   });
@@ -99,9 +99,9 @@ module.exports = app => {
     const options = { new: true, 
                       runValidators: true };
 
-    db.Note.create(req.body)
+    db.Comment.create(req.body)
     .then(results => 
-      db.News.findByIdAndUpdate(id, {$push: { notes: results._id }}, options))
+      db.News.findByIdAndUpdate(id, {$push: { comments: results._id }}, options))
     .then(results => res.json(results))
     .catch(error => res.json(error));
   });
@@ -140,12 +140,12 @@ module.exports = app => {
   app.delete("/api/comments/delete", (req, res) => {
     const id = req.body.id;
 
-    db.Note.findByIdAndRemove(id)
+    db.Comment.findByIdAndRemove(id)
     .then((error, result) => { 
       let response = { id: id };
 
       error ? response.error = `Error occurred`
-            : response.message = `Note deleted`;
+            : response.message = `Comment deleted`;
 
       res.json(response);
     });

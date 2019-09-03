@@ -1,7 +1,7 @@
 <div class="container-fluid" id="note-container">
-{{#if notes}}
+{{#if comments}}
   <ul class="list-group">
-  {{#each notes}}
+  {{#each comments}}
     <li class="list-group-item">
       <div class="card" data-id={{_id}}>
         <div class="card-body primary-color">
@@ -15,7 +15,7 @@
 {{else}}
   <div class="card">
     <div class="card-body primary-color text-center">
-      <p class="note card-text d-inline white-text font-bold">No notes currently exist. Add the first one!</p>
+      <p class="note card-text d-inline white-text font-bold">No comments currently exist. Add the first one!</p>
     </div>
   </div>
 {{/if}}
